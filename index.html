@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Music App</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+
+	<body>
+		<header class="main-header">
+			<div class="container">
+				<h1>
+					My <span>Music</span> App
+				</h1>
+				<div class="header-item">
+					<p>Powered by</p>
+					<img class="header-logo" src="img/header-logo-791fb3f.svg" alt="Logo de MusicBrainz">
+				</div>
+			</div>
+		</header>
+
+
+		<section class="hero" id="page-top">
+			<div class="hero-bg-overlay">
+
+				<div class="container">
+					<div class="hero-container">
+	
+						<div class="hero-title">
+								<span class="hero-title-white">Informations about</span>
+								<span class="hero-title-gradient">your music</span>
+						</div>
+	
+						<div class="hero-instruction">Enter a search element and select a criterion</div>
+	
+						<form action="" class="search-form">
+							<div class="form-group">
+								<input type="text" id="search-txt" name="search-txt" placeholder="artist/album/title..." class="input-text"/>
+							</div>
+							<div class="form-group">
+								<div class="select-box">
+									<div class="options-container">
+										<div class="option">
+											<input type="radio" class="radio" id="everything" name="category" value="everything"/>
+											<label for="everything">Everything</label>
+										</div>
+										<div class="option">
+											<input type="radio" class="radio" id="artist" name="category" value="artist"/>
+											<label for="artist">Artist</label>
+										</div>
+										<div class="option">
+											<input type="radio" class="radio" id="title" name="category" value="title"/>
+											<label for="title">Title</label>
+										</div>
+										<div class="option">
+											<input type="radio" class="radio" id="album" name="category" value="album"/>
+											<label for="album">Album</label>
+										</div>
+									</div>
+									<div class="selected">- criterion -</div>
+									<!-- <div class="selected">Select criteria</div> -->
+								</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn-grad button-std button-gradient">
+									<i class="fas fa-search"></i>
+									Search
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="hero-results">
+						<div class="hero-results-item"></div>
+						<div class="hero-link">
+							<a href="#results" title="See results">
+								<i class="fas fa-chevron-circle-down btn--jump"></i>
+							</a>
+						</div>
+						<div id="hero-loader">
+							<div class="middle">
+								<div class="bar bar1"></div>
+								<div class="bar bar2"></div>
+								<div class="bar bar3"></div>
+								<div class="bar bar4"></div>
+								<div class="bar bar5"></div>
+								<div class="bar bar6"></div>
+								<div class="bar bar7"></div>
+								<div class="bar bar8"></div>
+							</div>
+							<p>Loading</p>
+						</div>
+						<div class="error-form">
+							<p class="error-message"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="results-header" id="results">
+			<div class="container">
+				<div class="result-head-align">
+					<div class="result-head">
+						<span class="result-head-item">#</span>
+						<span class="result-head-item">Artist</span>
+						<span class="result-head-item">Title</span>
+						<span class="result-head-item">Album</span>
+						<span class="result-head-item">Action</span>
+					</div>
+					<!-- <div class="line-gradient"></div> -->
+				</div>
+			</div>
+		</section>
+
+		<section class="results-display" >
+			<div class="container">
+				<ul class="results-list">
+					<!-- <li class="no-result-item">
+						<p class="">- Entrez un élément de recherche -</p>
+					</li>
+					<li class="result-item">
+						<span class="">#</span>
+						<span class="">Artist</span>
+						<span class="">Title</span>
+						<span class="">Album</span>
+						<a href="#overlay3"><button>+</button></a>
+					</li> -->
+				</ul>
+				<div class="sub-section">
+					<button id="btn-next-results" display="none">Show more results</button>
+				</div>
+
+				<div id="more-results-loader">
+					<div class="middle">
+						<div class="bar bar1"></div>
+						<div class="bar bar2"></div>
+						<div class="bar bar3"></div>
+						<div class="bar bar4"></div>
+						<div class="bar bar5"></div>
+						<div class="bar bar6"></div>
+						<div class="bar bar7"></div>
+						<div class="bar bar8"></div>
+					</div>
+					<p>Loading</p>
+				</div>
+			</div>
+		</section>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal" display= block>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-h2">Modal Header</h2>
+                    <span class="close">&times;</span>                   
+                </div>
+                <div class="modal-body">
+                    <div>                        
+                        <h3 class="modal-h3">
+                            <span class="modal-h3-span">Informations &blacktriangleright;
+                            </span>
+                        </h3>                        
+                        <div class="modal-body-item">
+                            <span class="modal-subtitle">Title - </span>
+                            <span class="modal-text" id="modal-info-title"></span>
+                        </div>
+                        <div class="modal-body-item">
+                            <span class="modal-subtitle">Artist - </span>
+                            <span class="modal-text" id="modal-info-artist"></span>
+                        </div>
+                        <div class="modal-body-item">
+                            <span class="modal-subtitle">Album(s) - </span>
+                            <span class="modal-text" id="modal-info-album"></span>
+                        </div>
+                        <div class="modal-body-item">
+                            <span class="modal-subtitle">Genres - </span>
+                            <span class="modal-text" id="modal-info-genres"></span>
+                        </div>
+                        <div class="modal-body-item">
+                            <span class="modal-subtitle">Length - </span>
+                            <span class="modal-text" id="modal-info-length"></span>
+                        </div>
+                        <div class="modal-body-item">
+                            <span class="modal-subtitle">Note - </span>
+							<span class="modal-text" id="modal-info-note"></span>
+							<span class="far modal-stars-contour">
+								<span class="fas modal-stars-fill"></span>
+							</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="modal-h3">
+                            <span class="modal-h3-span">Cover arts &blacktriangleright;</span>
+                        </h3>
+                        <ul id="modal-cover-list"></ul>
+						<div id="covers-loader">
+							<div class="middle">
+								<div class="bar bar1"></div>
+								<div class="bar bar2"></div>
+								<div class="bar bar3"></div>
+								<div class="bar bar4"></div>
+								<div class="bar bar5"></div>
+								<div class="bar bar6"></div>
+								<div class="bar bar7"></div>
+								<div class="bar bar8"></div>
+							</div>
+							<p>Loading</p>
+						</div>
+                            <!-- <li id="no-cover-art">- no cover art found -</li> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <h3>Modal Footer</h3>
+                </div>
+            </div>
+        </div>
+
+		<a href="#page-top" id="btn-top" title="Go to top">
+			<span class="fas fa-chevron-up"></span>
+		</a>
+
+		<!-- <footer class="main-footer">
+			
+        <div class="container">
+
+            <h1>My Music App</h1>
+        </div>
+    </footer> -->
+
+		<script src="scripts/sc_00.js"></script>
+		<script src="https://kit.fontawesome.com/02a12bbe21.js"></script>
+
+	</body>
+</html>
